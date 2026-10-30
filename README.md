@@ -1,37 +1,53 @@
-## Borderlands 3 Save Editor
+# BL3SaveEditor-CN
 
-A desktop based save _and_ profile editor for [Borderlands 3](borderlands.com/).
+[简体中文](#简体中文) | [English](#english)
 
-### 简体中文版本
+## 简体中文
 
-本仓库默认显示简体中文，界面文本集中在 `BL3SaveEditor/Localization/zh-CN/Strings.xaml`，游戏名称和部件显示文本集中在 `BL3SaveEditor/Localization/zh-CN/GameNames.json`。游戏名称的来源、未翻译项和维护方式见 [游戏名称汉化说明](docs/game-names-zh-CN.md)。原始存档字段、调试日志以及部分第三方控件文本仍可能显示英文；存档中的原始标识不会因界面翻译而改变。
+BL3SaveEditor-CN 是 [FromDarkHell/BL3SaveEditor](https://github.com/FromDarkHell/BL3SaveEditor) 的简体中文版本，用于编辑《无主之地 3》的角色存档和个人档案。本项目在原版基础上提供中文界面、部分游戏名称和部件说明，以及 Windows 便携版构建。
 
-可在 GitHub Actions 中手动运行 `Build portable executable`，从运行结果的 Artifacts 下载便携版。程序仍需要 Windows 上的 .NET Framework 4.7.2 或兼容版本。当前自动更新功能仍指向上游英文版，请勿通过它更新中文版。
+### 下载与使用
 
-发布时，先将指向目标提交的 Git tag 推送到 GitHub，再在 Actions 中手动运行 `Release portable executable`，填写该 tag 并按需选择预发布。工作流会构建 tag 对应的源码，创建 Release 并附上 EXE 和 ZIP；相同 tag 已有 Release 时不会覆盖。如果上传或发布失败，请检查是否留下 Release 草稿。
+1. 从本项目的 [Releases](https://github.com/wuxie0ne/BL3SaveEditor-CN/releases) 下载 `BL3SaveEditor-Portable.exe`，或下载并解压 `BL3SaveEditor-Portable.zip`。
+2. 在 Windows 上运行程序。程序需要 .NET Framework 4.7.2 或兼容版本。
+3. 点击“打开”，选择角色存档（通常为数字命名的 `.sav` 文件）或个人档案 `profile.sav`。
+4. 修改后点击“保存”或“另存为”。**编辑前请先备份存档。**
 
-![](https://img.shields.io/tokei/lines/github/FromDarkHell/BL3SaveEditor?style=for-the-badge) ![](https://img.shields.io/github/downloads/FromDarkHell/BL3SaveEditor/total?style=for-the-badge)
+当前部分游戏名称、部件代码、原始存档字段和第三方控件文本仍显示英文。受福说明中的“（数值）”是游戏动态填充的占位符，不代表实际数值。汉化来源、覆盖范围和维护方式见[游戏名称汉化说明](docs/game-names-zh-CN.md)。
 
-### Installation / Usage
+**自动更新提示仍指向原版项目，可能引导下载英文版。** 请从本项目的 Releases 页面获取中文版更新。
 
-1. Download the exe/zip for your respective OS/setup available on the [Releases](https://github.com/FromDarkHell/BL3SaveEditor/releases) tab.
-   - _Which one do I download?_ If you don't know which one to download, you probably will want to download `BL3SaveEditor-Portable.zip`<sup>[here](https://github.com/FromDarkHell/BL3SaveEditor/releases/latest/download/BL3SaveEditor-Portable.zip)</sup>. This is a self-contained windows binary. If that one doesn't launch for you, try downloading `BL3SaveEditor.zip`<sup>[here](https://github.com/FromDarkHell/BL3SaveEditor/releases/latest/download/BL3SaveEditor.zip)</sup>.
-2. Then you download / run the exe
-3. Click `Open`, then you can select either a profile (`profile.sav`) or a game save (`[NUMBERS].sav`).
-4. You can now edit your profile or game save to your hearts content!
-5. Once you think you're done editing your saves, you can save your file with either the `Save` button (which will overwrite your loaded file), or use the `Save As` button, allowing you to save to a new file. In either case, it will make backups to help keep your saves protected!
+### 构建与发布
 
-### Credits
+在 GitHub Actions 中手动运行 `Build portable executable`，可以构建并下载便携版 artifact。发布时，先将指向目标提交的 Git tag 推送到 GitHub，再手动运行 `Release portable executable` 并填写该 tag；工作流会构建该版本并发布 EXE 和 ZIP。已有同名 Release 不会被覆盖；如果上传或发布失败，请检查是否留下 Release 草稿。
 
-- [gibbed](https://github.com/Gibbed) for their [Inventory Serial Number Database](https://github.com/gibbed/Borderlands3Dumps). It's what allows me to know what weapons you've got in your backpack! I also use their [Borderlands3Protos](https://github.com/gibbed/Borderlands3Protos) repository
-- [apocalyptech](https://github.com/apocalyptech/) for writing the incredibly helpful [guide](https://github.com/BLCM/BLCMods/wiki/Understanding-BL3-Item-Serial-Numbers) on parsing weapon serials.
-- [Benjamin Ruhl](https://github.com/benruehl) for creating [AdonisUI](https://github.com/benruehl/adonis-ui), the WPF toolkit I used for most of my UI development/theming.
-- [xceed software](https://github.com/xceedsoftware) for creating the [Extended WPF Toolkit](https://github.com/xceedsoftware/wpftoolkit), allowing me to have a `Raw` tab and number up/downs.
-- [Gearbox Software](https://www.gearboxsoftware.com/) of course for creating Borderlands 3.
-- Many others who helped test the editor as well as help me get my mind around some of the concepts.
+### 致谢与许可
 
-### Support
+感谢 [FromDarkHell](https://github.com/FromDarkHell) 和 [BL3SaveEditor 原项目](https://github.com/FromDarkHell/BL3SaveEditor)的所有贡献者，为本版本提供基础。感谢 [gibbed](https://github.com/gibbed) 提供的 [Borderlands3Dumps](https://github.com/gibbed/Borderlands3Dumps) 与 [Borderlands3Protos](https://github.com/gibbed/Borderlands3Protos)，以及 [apocalyptech](https://github.com/apocalyptech)、[AdonisUI](https://github.com/benruehl/adonis-ui)、[Extended WPF Toolkit](https://github.com/xceedsoftware/wpftoolkit) 和原项目的其他贡献者。
 
-If you for some reason want to support me financially for this project (or others I make), you can donate to me via [ko-fi](https://ko-fi.com/fromdarkhell) or [Patreon](https://patreon.com/fromdarkhell).
+本项目使用 GNU General Public License v3.0；详见 [LICENSE](LICENSE)。
 
-[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/O4O44GLCD) [![Support me on Patreon](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Fshieldsio-patreon.vercel.app%2Fapi%3Fusername%3Dfromdarkhell%26type%3Dpatrons&style=for-the-badge)](https://patreon.com/fromdarkhell)
+## English
+
+BL3SaveEditor-CN is a Simplified Chinese edition of [FromDarkHell/BL3SaveEditor](https://github.com/FromDarkHell/BL3SaveEditor), a desktop editor for Borderlands 3 character saves and profiles. This fork adds a Chinese interface, translations for some game names and item parts, and Windows portable builds.
+
+### Download and use
+
+1. Download `BL3SaveEditor-Portable.exe` from this project's [Releases](https://github.com/wuxie0ne/BL3SaveEditor-CN/releases), or download and extract `BL3SaveEditor-Portable.zip`.
+2. Run it on Windows with .NET Framework 4.7.2 or a compatible version installed.
+3. Select “打开” (Open), then choose a character save (usually a numbered `.sav` file) or `profile.sav`.
+4. Select “保存” (Save) or “另存为” (Save As) when finished. **Back up your saves before editing.**
+
+Some game names, part identifiers, raw save fields, and third-party control text remain in English. “（数值）” in anointment descriptions is a placeholder for a value supplied by the game, not an actual value. See the [game name localization notes](docs/game-names-zh-CN.md) for sources, coverage, and maintenance details; the notes are in Chinese.
+
+**The built-in update prompt still points to the original project and may offer the English version.** Download Chinese edition updates from this project's Releases page.
+
+### Build and release
+
+Run `Build portable executable` manually in GitHub Actions to build and download a portable artifact. To publish a release, push a Git tag pointing to the target commit, then run `Release portable executable` manually with that tag. The workflow builds the tagged source and publishes an EXE and ZIP. It does not overwrite an existing release for the same tag; check for a leftover draft if uploading or publishing fails.
+
+### Credits and license
+
+Thanks to [FromDarkHell](https://github.com/FromDarkHell) and all contributors to the original [BL3SaveEditor](https://github.com/FromDarkHell/BL3SaveEditor) for the foundation of this edition. Thanks also to [gibbed](https://github.com/gibbed) for [Borderlands3Dumps](https://github.com/gibbed/Borderlands3Dumps) and [Borderlands3Protos](https://github.com/gibbed/Borderlands3Protos), [apocalyptech](https://github.com/apocalyptech), [AdonisUI](https://github.com/benruehl/adonis-ui), [Extended WPF Toolkit](https://github.com/xceedsoftware/wpftoolkit), and the other contributors to the original project.
+
+This project is licensed under the GNU General Public License v3.0. See [LICENSE](LICENSE).
