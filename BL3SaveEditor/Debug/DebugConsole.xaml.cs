@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.ComponentModel;
 using System.Windows;
 using BL3Tools.TMSUnpack;
@@ -51,7 +51,7 @@ namespace BL3SaveEditor.Debug {
                 }
             }
             catch(Exception ex) {
-                MessageBox.Show(string.Format("Error unpacking TMS: {0}", ex.Message));
+                MessageBox.Show(string.Format(App.Text("TmsError"), ex.Message));
             }
             
             return;

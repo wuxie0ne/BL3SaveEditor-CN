@@ -11,5 +11,8 @@ namespace BL3SaveEditor {
     /// Interaction logic for App.xaml
     /// </summary>
     public partial class App : Application {
+        public static string Text(string key) {
+            return (string)Current.FindResource(key);
+        }
     }
 }

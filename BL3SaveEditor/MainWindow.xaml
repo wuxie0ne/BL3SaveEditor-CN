@@ -1,4 +1,4 @@
-﻿<adonisControls:AdonisWindow x:Class="BL3SaveEditor.MainWindow"
+<adonisControls:AdonisWindow x:Class="BL3SaveEditor.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -7,7 +7,7 @@
         xmlns:adonisControls="clr-namespace:AdonisUI.Controls;assembly=AdonisUI"
         xmlns:adonisExtensions="clr-namespace:AdonisUI.Extensions;assembly=AdonisUI"
         xmlns:bl3tools="clr-namespace:BL3Tools;assembly=BL3Tools" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
-        mc:Ignorable="d" Title="Borderlands 3 Save Editor" Height="612" Width="859"
+        mc:Ignorable="d" Title="{StaticResource Loc_Borderlands_3_Save_Editor_78e928}" Height="612" Width="859"
         Background="{DynamicResource {x:Static adonisUi:Brushes.Layer0BackgroundBrush}}" UseLayoutRounding="True"
         Closed="AdonisWindow_Closed" DataContext="{Binding RelativeSource={RelativeSource Self}}">
     <Window.Style>
@@ -56,7 +56,7 @@
                 <StackPanel Orientation="Horizontal">
                     <Image Width="16" Height="16" Source="Icons\fugue\wrench-screwdriver.png" Margin="0 0 5 0"
                             RenderOptions.BitmapScalingMode="Fant" />
-                    <Label FontFamily="Segoe UI" FontSize="14" Content="Debug" FontWeight="Medium" />
+                    <Label FontFamily="Segoe UI" FontSize="14" Content="{StaticResource Loc_Debug_bd604d}" FontWeight="Medium" />
                 </StackPanel>
             </Button>
         </StackPanel>
@@ -70,7 +70,7 @@
                 <StackPanel Orientation="Horizontal">
                     <Image Width="16" Height="16" Source="Icons\fugue\document-binary.png" Margin="0 0 5 0"
                             RenderOptions.BitmapScalingMode="Fant" />
-                    <Label Content="New" FontWeight="Medium" />
+                    <Label Content="{StaticResource Loc_New_6403f2}" FontWeight="Medium" />
                 </StackPanel>
             </Button>
             <Button Name="OpenSaveBtn" Click="OpenSaveBtn_Click">
@@ -78,7 +78,7 @@
                     <Image Width="16" Height="16" Source="Icons\fugue\folder-open-document.png" Margin="0 0 5 0"
                             RenderOptions.BitmapScalingMode="Fant" />
 
-                    <Label Content="Open" FontWeight="Medium" />
+                    <Label Content="{StaticResource Loc_Open_cf9b77}" FontWeight="Medium" />
                 </StackPanel>
             </Button>
             <Button Name="SaveSaveBtn" IsEnabled="False" Click="SaveSaveBtn_Click">
@@ -86,14 +86,14 @@
                     <Image Width="16" Height="16" Source="Icons\fugue\disk-black.png" Margin="0 0 5 0"
                             RenderOptions.BitmapScalingMode="Fant" />
 
-                    <Label Content="Save" FontWeight="Medium" />
+                    <Label Content="{StaticResource Loc_Save_efc007}" FontWeight="Medium" />
                 </StackPanel>
             </Button>
             <Button Name="SaveAsSaveBtn" IsEnabled="False" Click="SaveAsSaveBtn_Click">
                 <StackPanel Orientation="Horizontal">
                     <Image Width="16" Height="16" Source="Icons\fugue\disk--plus.png" Margin="0 0 5 0"
                             RenderOptions.BitmapScalingMode="Fant" />
-                    <Label Content="Save As" FontWeight="Medium" />
+                    <Label Content="{StaticResource Loc_Save_As_ae3a12}" FontWeight="Medium" />
                 </StackPanel>
             </Button>
 
@@ -107,39 +107,39 @@
                     <StackPanel Orientation="Horizontal">
                         <Image Width="27" Height="26" Source="Icons\game\ECHOComm_IE.png" Margin="0 0 5 0"
                                 RenderOptions.BitmapScalingMode="Fant" />
-                        <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="General"
+                        <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="{StaticResource Loc_General_9239ee}"
                                 FontWeight="Medium" />
                     </StackPanel>
                 </TabItem.Header>
                 <Grid>
-                    <Label FontWeight="Normal" Content="Save GUID:" HorizontalAlignment="Left" Margin="10,41,0,0"
+                    <Label FontWeight="Normal" Content="{StaticResource Loc_Save_GUID_1b3245}" HorizontalAlignment="Left" Margin="10,41,0,0"
                             VerticalAlignment="Top" Height="24" VerticalContentAlignment="Center" Width="101" />
                     <TextBox Name="GUIDTextBox" IsEnabled="{Binding Path=bSaveLoaded}"
                             Text="{Binding Path=saveGame.Character.SaveGameGuid, Mode=TwoWay}"
                             HorizontalAlignment="Stretch" Height="25" Margin="116,40,418,0" TextWrapping="Wrap"
                             VerticalAlignment="Top"
-                            ToolTip="A randomly generated ID of your save; do not touch unless you know what you're doing" />
-                    <Button Content="Randomize" Name="RandomizeGUIDBtn" Click="RandomizeGUIDBtn_Click"
+                            ToolTip="{StaticResource Loc_A_randomly_generated_ID_of_your_save_do_not_t_09237c}" />
+                    <Button Content="{StaticResource Loc_Randomize_7e429a}" Name="RandomizeGUIDBtn" Click="RandomizeGUIDBtn_Click"
                             Margin="0,41,328,0" VerticalAlignment="Top" RenderTransformOrigin="2.353,0.208"
                             HorizontalAlignment="Right" Width="85"
-                            ToolTip="Randomizes the GUID associated with your save" />
+                            ToolTip="{StaticResource Loc_Randomizes_the_GUID_associated_with_your_save_ef7297}" />
 
-                    <Label FontWeight="Normal" Content="Save Game Slot:" HorizontalAlignment="Left" Margin="10,70,0,0"
+                    <Label FontWeight="Normal" Content="{StaticResource Loc_Save_Game_Slot_38b8e9}" HorizontalAlignment="Left" Margin="10,70,0,0"
                             VerticalAlignment="Top" Height="20" Width="101" VerticalContentAlignment="Center" />
                     <xctk:IntegerUpDown IsEnabled="{Binding Path=bSaveLoaded}"
                             Value="{Binding Path=saveGame.Character.SaveGameId, Mode=TwoWay}"
                             HorizontalAlignment="Stretch" Margin="116,70,328,0" VerticalAlignment="Top"
-                            ToolTip="A number associated with your save; do not touch unless you know what you're doing" />
+                            ToolTip="{StaticResource Loc_A_number_associated_with_your_save_do_not_tou_5ad965}" />
 
 
 
-                    <Label FontWeight="Normal" Content="Total Time Played: " HorizontalAlignment="Left"
+                    <Label FontWeight="Normal" Content="{StaticResource Loc_Total_Time_Played_df9d12}" HorizontalAlignment="Left"
                             Margin="10,95,0,0" VerticalAlignment="Top" Height="20" VerticalContentAlignment="Center" />
                     <xctk:TimeSpanUpDown IsEnabled="{Binding Path=bSaveLoaded}"
                             Value="{Binding Path=saveGame.Character.TimePlayedSeconds, Mode=TwoWay, Converter={StaticResource IntegerToSpanConverter1}}"
                             HorizontalAlignment="Stretch" Margin="116,95,328,0" VerticalAlignment="Top"
-                            ToolTip="Format: Days.Hours:Minutes:Seconds" />
-                    <Label FontWeight="Normal" Content="Platform:" HorizontalAlignment="Left" Margin="10,10,0,0"
+                            ToolTip="{StaticResource Loc_Format_Days_Hours_Minutes_Seconds_9e9dea}" />
+                    <Label FontWeight="Normal" Content="{StaticResource Loc_Platform_098b81}" HorizontalAlignment="Left" Margin="10,10,0,0"
                             VerticalAlignment="Top" Width="101" Height="25" VerticalContentAlignment="Center" />
 
                     <ComboBox Margin="116,10,328,0" Height="25"
@@ -153,15 +153,15 @@
                     <StackPanel Orientation="Horizontal">
                         <Image Width="27" Height="26" Source="Icons\game\MinimapIcon_QuickChange.png" Margin="0 0 5 0"
                                 RenderOptions.BitmapScalingMode="Fant" />
-                        <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="Character"
+                        <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="{StaticResource Loc_Character_ee9946}"
                                 FontWeight="Medium" />
                     </StackPanel>
                 </TabItem.Header>
                 <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                    <Expander IsExpanded="True" Header="Character" HorizontalAlignment="Left" Margin="10,10,377,312"
+                    <Expander IsExpanded="True" Header="{StaticResource Loc_Character_ee9946}" HorizontalAlignment="Left" Margin="10,10,377,312"
                             VerticalAlignment="Stretch">
                         <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                            <Label FontWeight="Normal" Content="Class: " Margin="10,11,0,0"
+                            <Label FontWeight="Normal" Content="{StaticResource Loc_Class_85169a}" Margin="10,11,0,0"
                                     VerticalContentAlignment="Center" VerticalAlignment="Top"
                                     HorizontalContentAlignment="Left" HorizontalAlignment="Left" Width="140" Height="24" />
                             <ComboBox IsEnabled="{Binding Path=bSaveLoaded}"
@@ -170,45 +170,45 @@
                                     SelectionChanged="CharacterClass_SelectionChanged" HorizontalAlignment="Stretch"
                                     Margin="155,11,20,0" VerticalAlignment="Top" />
 
-                            <Label FontWeight="Normal" Content="XP Level: " Margin="10,40,0,0"
+                            <Label FontWeight="Normal" Content="{StaticResource Loc_XP_Level_4fe72f}" Margin="10,40,0,0"
                                     VerticalContentAlignment="Center" HorizontalContentAlignment="Left"
                                     HorizontalAlignment="Left" Width="140" VerticalAlignment="Top" Height="20" />
                             <xctk:IntegerUpDown IsEnabled="{Binding Path=bSaveLoaded}"
                                     Value="{Binding Path=saveGame.Character.ExperiencePoints, Mode=TwoWay, Converter={StaticResource EXPToLevelConverter1}}"
                                     HorizontalAlignment="Stretch" Margin="155,40,20,0" VerticalAlignment="Top"
-                                    ToolTip="XP Level of your save" Maximum="{Binding Path=maximumXP}"
+                                    ToolTip="{StaticResource Loc_XP_Level_of_your_save_3f78b0}" Maximum="{Binding Path=maximumXP}"
                                     Minimum="{Binding Path=minimumXP}" Width="271" />
 
-                            <Label FontWeight="Normal" Content="Mayhem Level: " Margin="10,69,0,0"
+                            <Label FontWeight="Normal" Content="{StaticResource Loc_Mayhem_Level_425f1b}" Margin="10,69,0,0"
                                     VerticalContentAlignment="Center" VerticalAlignment="Top" HorizontalAlignment="Left"
                                     Width="140" Height="20" />
                             <xctk:IntegerUpDown IsEnabled="{Binding bSaveLoaded}"
                                     Value="{Binding saveGame.Character.MayhemLevel, Mode=TwoWay}"
                                     HorizontalAlignment="Stretch" Margin="155,69,20,0" VerticalAlignment="Top"
-                                    ToolTip="Mayhem Level of your current save" Maximum="{Binding maximumMayhemLevel}"
+                                    ToolTip="{StaticResource Loc_Mayhem_Level_of_your_current_save_b3e89d}" Maximum="{Binding maximumMayhemLevel}"
                                     Minimum="0" Width="271" />
 
-                            <Label FontWeight="Normal" Content="Skill Points: " Margin="10,98,0,0"
+                            <Label FontWeight="Normal" Content="{StaticResource Loc_Skill_Points_fd4544}" Margin="10,98,0,0"
                                     VerticalContentAlignment="Center" VerticalAlignment="Top"
                                     HorizontalContentAlignment="Left" HorizontalAlignment="Left" Width="140" Height="20" />
                             <xctk:IntegerUpDown IsEnabled="{Binding bSaveLoaded}"
                                     Value="{Binding saveGame.Character.AbilityData.AbilityPoints, Mode=TwoWay}"
                                     HorizontalAlignment="Stretch" Margin="155,98,20,0" VerticalAlignment="Top"
-                                    ToolTip="Current skill points available on the save" Minimum="0" Width="271" />
+                                    ToolTip="{StaticResource Loc_Current_skill_points_available_on_the_save_e97caa}" Minimum="0" Width="271" />
                             <xctk:IntegerUpDown IsEnabled="{Binding bSaveLoaded}"
                                     Value="{Binding saveGame.Character.PlaythroughsCompleted, Mode=TwoWay}"
                                     HorizontalAlignment="Stretch" Margin="155,123,20,0" VerticalAlignment="Top"
-                                    ToolTip="Amount of playthroughs COMPLETED on this save" Minimum="0" Maximum="2"
+                                    ToolTip="{StaticResource Loc_Amount_of_playthroughs_COMPLETED_on_this_save_e59560}" Minimum="0" Maximum="2"
                                     Width="271" />
-                            <Label FontWeight="Normal" Content="Playthroughs Completed: " Margin="10,123,0,0"
+                            <Label FontWeight="Normal" Content="{StaticResource Loc_Playthroughs_Completed_f3a4f8}" Margin="10,123,0,0"
                                     VerticalContentAlignment="Center" HorizontalContentAlignment="Left"
                                     HorizontalAlignment="Left" Width="140" VerticalAlignment="Top" Height="20" />
                         </Grid>
                     </Expander>
-                    <Expander IsExpanded="True" Header="Customization" HorizontalAlignment="Left" Margin="10,186,0,10"
+                    <Expander IsExpanded="True" Header="{StaticResource Loc_Customization_d7f0ac}" HorizontalAlignment="Left" Margin="10,186,0,10"
                             VerticalAlignment="Stretch" Width="446">
                         <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="446" Height="207">
-                            <Label FontWeight="Normal" Content="Character Name: " VerticalAlignment="Top"
+                            <Label FontWeight="Normal" Content="{StaticResource Loc_Character_Name_df8f46}" VerticalAlignment="Top"
                                     VerticalContentAlignment="Center" HorizontalContentAlignment="Left"
                                     Margin="10,10,330,0" Height="23" />
                             <TextBox HorizontalAlignment="Left" VerticalContentAlignment="Top" Height="23"
@@ -216,7 +216,7 @@
                                     IsEnabled="{Binding bSaveLoaded}"
                                     Text="{Binding Path=saveGame.Character.PreferredCharacterName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                     VerticalAlignment="Top" Width="271 " />
-                            <Label FontWeight="Normal" VerticalAlignment="Top" Content="Head: "
+                            <Label FontWeight="Normal" VerticalAlignment="Top" Content="{StaticResource Loc_Head_1eaad7}"
                                     VerticalContentAlignment="Center" HorizontalContentAlignment="Left"
                                     Margin="10,38,330,0" Height="24" />
                             <ComboBox Name="PlayerHeadBox" VerticalContentAlignment="Top"
@@ -224,7 +224,7 @@
                                     SelectedValue="{Binding saveGame.Character, Converter={StaticResource HeadCustomizationToStringConverter}, ConverterParameter=heads}"
                                     HorizontalAlignment="Left" Margin="155,38,0,0" VerticalAlignment="Top" Width="271" />
 
-                            <Label FontWeight="Normal" VerticalAlignment="Top" Content="Skin: "
+                            <Label FontWeight="Normal" VerticalAlignment="Top" Content="{StaticResource Loc_Skin_639434}"
                                     VerticalContentAlignment="Center" HorizontalContentAlignment="Left"
                                     Margin="10,68,330,0" Height="22" />
                             <ComboBox Name="PlayerSkinBox" VerticalContentAlignment="Top"
@@ -232,83 +232,83 @@
                                     SelectedValue="{Binding saveGame.Character, Converter={StaticResource SkinCustomizationToStringConverter}, ConverterParameter=skins}"
                                     HorizontalAlignment="Left" Margin="155,66,0,0" VerticalAlignment="Top" Width="271" />
 
-                            <Label FontWeight="Normal" Content="Color 1: " VerticalAlignment="Top"
+                            <Label FontWeight="Normal" Content="{StaticResource Loc_Color_1_a4c72c}" VerticalAlignment="Top"
                                     VerticalContentAlignment="Center" HorizontalContentAlignment="Left"
                                     Margin="11,98,0,0" HorizontalAlignment="Left" Width="55" Height="22" />
                             <xctk:ColorPicker VerticalAlignment="Top" UsingAlphaChannel="True"
-                                    ToolTip="Sadly BL3 doesn't support RGB for colors; It will be converted to what BL3 considers the closest color."
+                                    ToolTip="{StaticResource Loc_Sadly_BL3_doesn_t_support_RGB_for_colors_It_w_3fbaef}"
                                     Margin="155,98,0,0" RenderTransformOrigin="0.455,0.826"
                                     IsEnabled="{Binding bSaveLoaded}"
                                     SelectedColor="{Binding saveGame.Character.SelectedColorCustomizations[0], Mode=TwoWay, Converter={StaticResource CustomPlayerColorToColorConverter1}, ConverterParameter=*Color_Primary1}"
                                     HorizontalAlignment="Left" Width="271" />
-                            <Label FontWeight="Normal" VerticalAlignment="Top" Content="Color 2: "
+                            <Label FontWeight="Normal" VerticalAlignment="Top" Content="{StaticResource Loc_Color_2_6fa7e6}"
                                     VerticalContentAlignment="Center" HorizontalContentAlignment="Left"
                                     Margin="11,124,0,0" HorizontalAlignment="Left" Width="55" Height="22" />
-                            <Label FontWeight="Normal" VerticalAlignment="Top" Content="Color 3: "
+                            <Label FontWeight="Normal" VerticalAlignment="Top" Content="{StaticResource Loc_Color_3_3730a6}"
                                     VerticalContentAlignment="Center" HorizontalContentAlignment="Left"
                                     Margin="11,151,0,0" HorizontalAlignment="Left" Width="55" Height="22" />
                             <xctk:ColorPicker VerticalAlignment="Top" UsingAlphaChannel="True"
-                                    ToolTip="Sadly BL3 doesn't support RGB for colors; It will be converted to what BL3 considers the closest color."
+                                    ToolTip="{StaticResource Loc_Sadly_BL3_doesn_t_support_RGB_for_colors_It_w_3fbaef}"
                                     Margin="155,125,0,0" RenderTransformOrigin="0.455,0.826"
                                     IsEnabled="{Binding bSaveLoaded}"
                                     SelectedColor="{Binding saveGame.Character.SelectedColorCustomizations[1], ConverterParameter=*Color_Secondary1, Converter={StaticResource CustomPlayerColorToColorConverter1}, Mode=TwoWay}"
                                     HorizontalAlignment="Left" Width="271" />
                             <xctk:ColorPicker VerticalAlignment="Top" UsingAlphaChannel="True"
-                                    ToolTip="Sadly BL3 doesn't support RGB for colors; It will be converted to what BL3 considers the closest color."
+                                    ToolTip="{StaticResource Loc_Sadly_BL3_doesn_t_support_RGB_for_colors_It_w_3fbaef}"
                                     Margin="155,151,0,0" RenderTransformOrigin="0.455,0.826"
                                     IsEnabled="{Binding bSaveLoaded}"
                                     SelectedColor="{Binding saveGame.Character.SelectedColorCustomizations[2], ConverterParameter=*Color_Tertiary1, Converter={StaticResource CustomPlayerColorToColorConverter1}, Mode=TwoWay}"
                                     HorizontalAlignment="Left" Width="271" />
                         </Grid>
                     </Expander>
-                    <Expander HorizontalAlignment="Right" Header="Unlocks" Margin="0,102,5,182" IsExpanded="True"
+                    <Expander HorizontalAlignment="Right" Header="{StaticResource Loc_Unlocks_aecf18}" Margin="0,102,5,182" IsExpanded="True"
                             Width="367">
                         <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                            <CheckBox Content="Eridian Analyzer"
+                            <CheckBox Content="{StaticResource Loc_Eridian_Analyzer_2ad11e}"
                                     IsChecked="{Binding saveGame.Character, ConverterParameter=Analyzer, Converter={StaticResource ChallengeToBooleanConverter1}}"
                                     VerticalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top"
                                     Width="110" Height="19" Margin="10,34,0,0" />
-                            <CheckBox Content="Eridian Resonator"
+                            <CheckBox Content="{StaticResource Loc_Eridian_Resonator_fd1a07}"
                                     IsChecked="{Binding saveGame.Character, ConverterParameter=Resonator, Converter={StaticResource ChallengeToBooleanConverter1}}"
                                     VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="10,57,0,0"
                                     VerticalAlignment="Top" Width="110" Height="20" />
-                            <CheckBox Content="Artifacts"
+                            <CheckBox Content="{StaticResource Loc_Artifacts_a5b79f}"
                                     IsChecked="{Binding saveGame.Character, ConverterParameter=Artifacts, Converter={StaticResource ChallengeToBooleanConverter1}}"
                                     VerticalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top"
                                     Width="110" Height="21" Margin="252,79,0,0" />
-                            <CheckBox Content="Weapon Slot #3"
+                            <CheckBox Content="{StaticResource Loc_Weapon_Slot_3_5ad732}"
                                     IsChecked="{Binding saveGame.Character, ConverterParameter=Weapon3, Converter={StaticResource ItemSlotConverter1}}"
                                     VerticalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top"
                                     Width="110" Height="20" Margin="252,9,0,0" />
-                            <CheckBox Content="Weapon Slot #4"
+                            <CheckBox Content="{StaticResource Loc_Weapon_Slot_4_c9994f}"
                                     IsChecked="{Binding saveGame.Character, ConverterParameter=Weapon4, Converter={StaticResource ItemSlotConverter1}}"
                                     VerticalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top"
                                     Width="110" Height="21" Margin="252,31,0,0" />
-                            <CheckBox Content="Class Mods"
+                            <CheckBox Content="{StaticResource Loc_Class_Mods_fa3b63}"
                                     IsChecked="{Binding saveGame.Character, ConverterParameter=ClassMods, Converter={StaticResource ChallengeToBooleanConverter1}}"
                                     VerticalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top"
                                     Width="110" Height="20" Margin="252,57,0,0" />
-                            <CheckBox Content="Mayhem Mode"
+                            <CheckBox Content="{StaticResource Loc_Mayhem_Mode_99fe50}"
                                     IsChecked="{Binding saveGame.Character, ConverterParameter=MayhemMode, Converter={StaticResource ChallengeToBooleanConverter1}}"
                                     VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="10,10,0,0"
                                     VerticalAlignment="Top" Width="110" Height="19" />
                         </Grid>
                     </Expander>
-                    <Expander HorizontalAlignment="Right" Header="Currency" Margin="0,10,10,316" IsExpanded="True"
+                    <Expander HorizontalAlignment="Right" Header="{StaticResource Loc_Currency_e070de}" Margin="0,10,10,316" IsExpanded="True"
                             Width="362">
                         <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="66">
-                            <Label FontWeight="Normal" Content="Money: " HorizontalAlignment="Left" Margin="10,10,0,0"
+                            <Label FontWeight="Normal" Content="{StaticResource Loc_Money_c99cc9}" HorizontalAlignment="Left" Margin="10,10,0,0"
                                     VerticalAlignment="Top" Height="23" Width="55" />
                             <xctk:IntegerUpDown IsEnabled="{Binding bSaveLoaded}"
                                     Value="{Binding saveGame.Character, ConverterParameter=money, Converter={StaticResource MoneyToIntegerConverter}, Mode=TwoWay}"
                                     HorizontalAlignment="Stretch" Margin="70,10,10,0" VerticalAlignment="Top"
-                                    ToolTip="Amount of money you have" Minimum="0" Height="23" />
-                            <Label FontWeight="Normal" Content="Eridium: " HorizontalAlignment="Left" Margin="10,40,0,0"
+                                    ToolTip="{StaticResource Loc_Amount_of_money_you_have_7471b2}" Minimum="0" Height="23" />
+                            <Label FontWeight="Normal" Content="{StaticResource Loc_Eridium_4cd94f}" HorizontalAlignment="Left" Margin="10,40,0,0"
                                     VerticalAlignment="Top" Height="20" />
                             <xctk:IntegerUpDown IsEnabled="{Binding bSaveLoaded}"
                                     Value="{Binding saveGame.Character, ConverterParameter=eridium, Converter={StaticResource EridiumToIntegerConverter}, Mode=TwoWay}"
                                     HorizontalAlignment="Stretch" Margin="70,40,10,0" VerticalAlignment="Top"
-                                    ToolTip="Amount of eridium you currently have" Minimum="0" />
+                                    ToolTip="{StaticResource Loc_Amount_of_eridium_you_currently_have_58875f}" Minimum="0" />
                         </Grid>
                     </Expander>
 
@@ -320,14 +320,14 @@
                         <Image Width="27" Height="26" Source="Icons\game\MinimapIcon_GalaxyMap.png" Margin="0 0 5 0"
                                 RenderOptions.BitmapScalingMode="Fant" />
                         <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                                Content="Fast Travel" FontWeight="Medium" />
+                                Content="{StaticResource Loc_Fast_Travel_196c06}" FontWeight="Medium" />
                     </StackPanel>
                 </TabItem.Header>
                 <Grid>
                     <GroupBox Name="VisitedTeleportersGrpBox" HorizontalAlignment="Stretch" Margin="0,0,198,0">
                         <GroupBox.Header>
                             <Grid Height="25" HorizontalAlignment="Stretch" Margin="0,0,0,0">
-                                <Label Content="Visited Teleporters" Margin="10,1,428,0"
+                                <Label Content="{StaticResource Loc_Visited_Teleporters_a509ac}" Margin="10,1,428,0"
                                         VerticalContentAlignment="Center" />
 
                                 <ComboBox Name="SelectedPlaythroughBox" IsEnabled="{Binding bSaveLoaded}"
@@ -364,15 +364,15 @@
                     </GroupBox>
 
                     <CheckBox Name="DbgMapBox" IsEnabled="{Binding bSaveLoaded}"
-                            IsChecked="{Binding Path=showDebugMaps, Mode=TwoWay}" Content="Show Debug Travels"
+                            IsChecked="{Binding Path=showDebugMaps, Mode=TwoWay}" Content="{StaticResource Loc_Show_Debug_Travels_7e17b6}"
                             HorizontalAlignment="Right" Margin="0,10,28,0" VerticalAlignment="Top" Height="24"
                             Width="130" Unchecked="DbgMapBox_StateChange" Checked="DbgMapBox_StateChange" />
                     <Button Name="EnableAllTeleportersBtn" IsEnabled="{Binding bSaveLoaded}"
-                            Click="EnableAllTeleportersBtn_Click" Content="Enable All Visible"
+                            Click="EnableAllTeleportersBtn_Click" Content="{StaticResource Loc_Enable_All_Visible_eb6809}"
                             HorizontalAlignment="Right" Margin="0,51,28,0" VerticalAlignment="Top" Width="130" />
 
                     <Button Name="DisableAllTeleportersBtn" IsEnabled="{Binding bSaveLoaded}"
-                            Click="DisableAllTeleportersBtn_Click" Content="Disable All Visible"
+                            Click="DisableAllTeleportersBtn_Click" Content="{StaticResource Loc_Disable_All_Visible_861461}"
                             HorizontalAlignment="Right" Margin="0,91,28,0" VerticalAlignment="Top" Width="130" />
                 </Grid>
             </TabItem>
@@ -381,7 +381,7 @@
                     <StackPanel Orientation="Horizontal">
                         <Image Width="27" Height="26" Source="Icons\game\BITMAP_ICO_Expansion_4k.png" Margin="0 0 5 0"
                                 RenderOptions.BitmapScalingMode="Fant" />
-                        <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="Inventory"
+                        <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="{StaticResource Loc_Inventory_300d29}"
                                 FontWeight="Medium" />
                     </StackPanel>
                 </TabItem.Header>
@@ -406,7 +406,7 @@
                                 <Image Width="27" Height="26" Source="Icons\game\MinimapIcon_Pinging_Loot.png"
                                         Margin="0 0 5 0" RenderOptions.BitmapScalingMode="Fant" />
                                 <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                                        Content="New Item" FontWeight="Medium" />
+                                        Content="{StaticResource Loc_New_Item_78b819}" FontWeight="Medium" />
                             </StackPanel>
                         </Button>
                         <Button Click="PasteCodeBtn_Click" Name="PasteCodeBtn">
@@ -414,7 +414,7 @@
                                 <Image Width="27" Height="26" Source="Icons\game\AllModIcons_I2E.png" Margin="0 0 5 0"
                                         RenderOptions.BitmapScalingMode="Fant" />
                                 <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                                        Content="Paste Code" FontWeight="Medium" />
+                                        Content="{StaticResource Loc_Paste_Code_2cee3d}" FontWeight="Medium" />
                             </StackPanel>
                         </Button>
 
@@ -426,7 +426,7 @@
                                 <Image Width="27" Height="26" Source="Icons\game\AllModIcons_I10.png" Margin="0 0 5 0"
                                         RenderOptions.BitmapScalingMode="Fant" />
                                 <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                                        Content="Sync Equipped" FontWeight="Medium" />
+                                        Content="{StaticResource Loc_Sync_Equipped_c45bd8}" FontWeight="Medium" />
                             </StackPanel>
                         </Button>
                         <Button Name="SyncAllBtn" Click="SyncAllBtn_Click">
@@ -434,7 +434,7 @@
                                 <Image Width="27" Height="26" Source="Icons\game\AllModIcons_I12.png" Margin="0 0 5 0"
                                         RenderOptions.BitmapScalingMode="Fant" />
                                 <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                                        Content="Sync All" FontWeight="Medium" />
+                                        Content="{StaticResource Loc_Sync_All_870265}" FontWeight="Medium" />
                             </StackPanel>
                         </Button>
                     </ToolBar>
@@ -504,14 +504,14 @@
                                         <MenuItem.Icon>
                                             <Image Source="Icons\fugue\document-copy.png" Height="16" Width="16" />
                                         </MenuItem.Icon>
-                                        <MenuItem.Header>Copy Code</MenuItem.Header>
+                                        <MenuItem.Header><StaticResource ResourceKey="Loc_Copy_Code_1589b6" /></MenuItem.Header>
                                         <MenuItem.InputGestureText>Ctrl+C</MenuItem.InputGestureText>
                                     </MenuItem>
                                     <MenuItem Command="{x:Static local:MainWindow.DuplicateCommand}">
                                         <MenuItem.Icon>
                                             <Image Source="Icons\fugue\documents-stack.png" Height="16" Width="16" />
                                         </MenuItem.Icon>
-                                        <MenuItem.Header>Duplicate Item</MenuItem.Header>
+                                        <MenuItem.Header><StaticResource ResourceKey="Loc_Duplicate_Item_7dbc28" /></MenuItem.Header>
                                         <MenuItem.InputGestureText>Ctrl+D</MenuItem.InputGestureText>
                                     </MenuItem>
                                     <Separator />
@@ -520,7 +520,7 @@
                                         <MenuItem.Icon>
                                             <Image Source="Icons\fugue\cross-script.png" Height="16" Width="16" />
                                         </MenuItem.Icon>
-                                        <MenuItem.Header>Delete Item</MenuItem.Header>
+                                        <MenuItem.Header><StaticResource ResourceKey="Loc_Delete_Item_f39cda" /></MenuItem.Header>
                                         <MenuItem.InputGestureText>Delete</MenuItem.InputGestureText>
                                     </MenuItem>
                                 </ContextMenu>
@@ -543,13 +543,13 @@
                                 VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0,-10,0,0">
                             <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
                                     IsEnabled="{Binding Path=SelectedSerial.InventoryKey, TargetNullValue=False}">
-                                <Label FontWeight="Normal" Content="Level: " VerticalContentAlignment="Center"
+                                <Label FontWeight="Normal" Content="{StaticResource Loc_Level_6b9acf}" VerticalContentAlignment="Center"
                                         HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"
                                         Width="100" Height="25" />
                                 <xctk:IntegerUpDown Value="{Binding Path=SelectedSerial.Level}" Minimum="0"
                                         Maximum="{Binding Path=maximumXP}" HorizontalAlignment="Stretch"
                                         Margin="115,10,10,0" VerticalAlignment="Top" />
-                                <Label FontWeight="Normal" Content="Mayhem Level: " VerticalContentAlignment="Center"
+                                <Label FontWeight="Normal" Content="{StaticResource Loc_Mayhem_Level_425f1b}" VerticalContentAlignment="Center"
                                         HorizontalAlignment="Left" Margin="10,35,0,0" VerticalAlignment="Top"
                                         Width="100" Height="20" />
                                 <xctk:IntegerUpDown
@@ -570,17 +570,17 @@
                                         SelectedValue="{Binding SelectedBalance, Mode=TwoWay}" Margin="115,60,104,0"
                                         VerticalAlignment="Top"
                                         IsEnabled="{Binding Path=SelectedSerial.InventoryKey, TargetNullValue=False}" />
-                                <Label FontWeight="Normal" Content="Item Balance: " VerticalContentAlignment="Center"
+                                <Label FontWeight="Normal" Content="{StaticResource Loc_Item_Balance_92c306}" VerticalContentAlignment="Center"
                                         HorizontalAlignment="Left" Margin="10,60,0,0" VerticalAlignment="Top"
                                         Width="100" Height="24" />
-                                <Label FontWeight="Normal" Content="Manufacturer: " VerticalContentAlignment="Center"
+                                <Label FontWeight="Normal" Content="{StaticResource Loc_Manufacturer_73c865}" VerticalContentAlignment="Center"
                                         HorizontalAlignment="Left" Margin="10,118,0,0" VerticalAlignment="Top"
                                         Width="100" Height="24" />
                                 <ComboBox ItemsSource="{Binding ValidManufacturers}"
                                         SelectedValue="{Binding SelectedManufacturer, Mode=TwoWay}"
                                         HorizontalAlignment="Stretch" Margin="115,118,10,0" VerticalAlignment="Top"
                                         IsEnabled="{Binding Path=SelectedSerial.InventoryKey, TargetNullValue=False}" />
-                                <Label FontWeight="Normal" Content="Inventory Data: " VerticalContentAlignment="Center"
+                                <Label FontWeight="Normal" Content="{StaticResource Loc_Inventory_Data_901a50}" VerticalContentAlignment="Center"
                                         HorizontalAlignment="Left" Margin="10,89,0,0" VerticalAlignment="Top"
                                         Width="100" Height="24" />
                                 <ComboBox ItemsSource="{Binding InventoryDatas}"
@@ -594,11 +594,11 @@
                                         </ItemsPanelTemplate>
                                     </ComboBox.ItemsPanel>
                                 </ComboBox>
-                                <Button Content="Edit Balance" Click="ChangeTypeBtn_Click" Name="ChangeTypeBtn"
+                                <Button Content="{StaticResource Loc_Edit_Balance_f6923d}" Click="ChangeTypeBtn_Click" Name="ChangeTypeBtn"
                                         HorizontalAlignment="Right" Margin="0,60,10,0" VerticalAlignment="Top"
                                         Width="89"
                                         IsEnabled="{Binding Path=SelectedSerial.InventoryKey, TargetNullValue=False}" />
-                                <CheckBox Content="Force Legit Parts" HorizontalAlignment="Left" Margin="10,147,0,0"
+                                <CheckBox Content="{StaticResource Loc_Force_Legit_Parts_833e09}" HorizontalAlignment="Left" Margin="10,147,0,0"
                                         VerticalAlignment="Top" Width="108"
                                         DataContext="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, Path=DataContext}"
                                         IsChecked="{Binding Path=ForceLegitParts, Mode=TwoWay}"
@@ -651,7 +651,7 @@
                                     <Label HorizontalContentAlignment="Center" HorizontalAlignment="Stretch"
                                             Margin="0,10,10,0" VerticalAlignment="Top" Height="16"
                                             Content="{Binding Path=SelectedSerial.Parts.Count}" Name="PartsLabel"
-                                            ContentStringFormat="Parts ({0}/63)">
+                                            ContentStringFormat="{StaticResource Loc_Parts_0_63_cf136f}">
 
                                     </Label>
                                     <Grid
@@ -691,11 +691,11 @@
                                         </ListView>
                                     </Grid>
 
-                                    <Button Content="Delete" Name="PartsDelBtn" HorizontalAlignment="Right"
+                                    <Button Content="{StaticResource Loc_Delete_f6fdbe}" Name="PartsDelBtn" HorizontalAlignment="Right"
                                             Margin="185,0,10,10" VerticalAlignment="Bottom" Width="75" Height="24"
                                             Grid.Column="0" Click="DeleteItemPartBtn_Click"
                                             IsEnabled="{Binding Path=SelectedSerial.InventoryKey, TargetNullValue=False}" />
-                                    <Button Content="Add" Name="PartsAddBtn" HorizontalAlignment="Left"
+                                    <Button Content="{StaticResource Loc_Add_61cc55}" Name="PartsAddBtn" HorizontalAlignment="Left"
                                             Margin="0,0,202,10" VerticalAlignment="Bottom" Width="68" Height="24"
                                             Grid.Column="0" Click="AddItemPartBtn_Click">
                                         <Button.IsEnabled>
@@ -747,11 +747,11 @@
                                         </ListView>
                                     </Grid>
 
-                                    <Button Content="Delete" Name="GenericPartsDelBtn" HorizontalAlignment="Right"
+                                    <Button Content="{StaticResource Loc_Delete_f6fdbe}" Name="GenericPartsDelBtn" HorizontalAlignment="Right"
                                             Margin="195,0,0,10" VerticalAlignment="Bottom" Width="75" Height="24"
                                             Grid.Column="1" Click="DeleteItemPartBtn_Click"
                                             IsEnabled="{Binding Path=SelectedSerial.InventoryKey, TargetNullValue=False}" />
-                                    <Button Content="Add" Name="GenericPartsAddBtn" HorizontalAlignment="Left"
+                                    <Button Content="{StaticResource Loc_Add_61cc55}" Name="GenericPartsAddBtn" HorizontalAlignment="Left"
                                             Margin="10,0,192,10" VerticalAlignment="Bottom" Width="68" Height="24"
                                             Grid.Column="1" Click="AddItemPartBtn_Click">
                                         <Button.IsEnabled>
@@ -769,7 +769,7 @@
                                     <Label HorizontalContentAlignment="Center" HorizontalAlignment="Stretch"
                                             Margin="10,10,0,0" VerticalAlignment="Top" Height="16" Grid.Column="1"
                                             Content="{Binding Path=SelectedSerial.GenericParts.Count}"
-                                            Name="GenericPartsLabel" ContentStringFormat="Generic Parts ({0}/15)" />
+                                            Name="GenericPartsLabel" ContentStringFormat="{StaticResource Loc_Generic_Parts_0_15_eaf9ec}" />
 
                                 </Grid>
 
@@ -787,7 +787,7 @@
                     <StackPanel Orientation="Horizontal">
                         <Image Width="28" Height="26" Source="Icons\game\MinimapIcon_MiniBoss.png" Margin="0 0 5 0"
                                 RenderOptions.BitmapScalingMode="Fant" />
-                        <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="Raw"
+                        <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="{StaticResource Loc_Raw_da433c}"
                                 FontWeight="Medium" />
                     </StackPanel>
                 </TabItem.Header>
@@ -804,7 +804,7 @@
                             <xctk:EditorTemplateDefinition TargetProperties="LostLootInventoryLists">
                                 <xctk:EditorTemplateDefinition.EditingTemplate>
                                     <DataTemplate>
-                                        <TextBlock Text="[Unsupported]" />
+                                        <TextBlock Text="{StaticResource Loc_Unsupported_e31e07}" />
                                     </DataTemplate>
                                 </xctk:EditorTemplateDefinition.EditingTemplate>
                             </xctk:EditorTemplateDefinition>
@@ -817,7 +817,7 @@
                     <StackPanel Orientation="Horizontal">
                         <Image Width="27" Height="26" Source="Icons\game\MinimapIcon_Respawn.png" Margin="0 0 5 0"
                                 RenderOptions.BitmapScalingMode="Fant" />
-                        <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="Profile"
+                        <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="{StaticResource Loc_Profile_ff4fc0}"
                                 FontWeight="Medium" />
                     </StackPanel>
                 </TabItem.Header>
@@ -827,8 +827,8 @@
                             AutoGenerateColumns="False" Margin="10,10,424,10" VerticalAlignment="Stretch"
                             HorizontalAlignment="Stretch">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Name" IsReadOnly="True" Binding="{Binding Path=str}" Width="*" />
-                            <DataGridTemplateColumn Header="Spent Tokens" Width="*">
+                            <DataGridTextColumn Header="{StaticResource Loc_Name_709a23}" IsReadOnly="True" Binding="{Binding Path=str}" Width="*" />
+                            <DataGridTemplateColumn Header="{StaticResource Loc_Spent_Tokens_5cf325}" Width="*">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <xctk:IntegerUpDown Value="{Binding Path=Value}" Minimum="0" />
@@ -837,76 +837,76 @@
                             </DataGridTemplateColumn>
                         </DataGrid.Columns>
                     </DataGrid>
-                    <Expander IsExpanded="True" Header="Customizations" Margin="0,38,10,0" HorizontalAlignment="Right"
+                    <Expander IsExpanded="True" Header="{StaticResource Loc_Customizations_78c8e0}" Margin="0,38,10,0" HorizontalAlignment="Right"
                             Width="399" Height="110" VerticalAlignment="Top">
                         <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,10,0,0">
-                            <Button Content="Unlock Room Decorations" Margin="0,0,244,55" HorizontalAlignment="Right"
+                            <Button Content="{StaticResource Loc_Unlock_Room_Decorations_d62683}" Margin="0,0,244,55" HorizontalAlignment="Right"
                                     Width="155" Height="30" VerticalAlignment="Bottom" Click="UnlockRoomDeco_Click" />
-                            <Button Content="Lock Room Decorations" Margin="0,0,244,20" HorizontalAlignment="Right"
+                            <Button Content="{StaticResource Loc_Lock_Room_Decorations_24d256}" Margin="0,0,244,20" HorizontalAlignment="Right"
                                     Width="155" Height="30" VerticalAlignment="Bottom" Click="LockRoomDeco_Click" />
 
-                            <Button Content="Unlock Customizations" Margin="244,0,0,55" HorizontalAlignment="Left"
+                            <Button Content="{StaticResource Loc_Unlock_Customizations_9b7b81}" Margin="244,0,0,55" HorizontalAlignment="Left"
                                     Width="155" Height="30" VerticalAlignment="Bottom"
                                     Click="UnlockCustomizations_Click" />
-                            <Button Content="Lock Decorations" Margin="244,0,0,20" HorizontalAlignment="Left"
+                            <Button Content="{StaticResource Loc_Lock_Decorations_1ccea8}" Margin="244,0,0,20" HorizontalAlignment="Left"
                                     Width="155" Height="30" VerticalAlignment="Bottom" Click="LockCustomizations_Click" />
                         </Grid>
                     </Expander>
                     <xctk:IntegerUpDown Value="{Binding Path=profile.Profile.GuardianRank.AvailableTokens, Mode=TwoWay}"
                             HorizontalAlignment="Right" Margin="0,153,10,0" VerticalAlignment="Top"
-                            ToolTip="The amount of tokens you have unspent on your profile" Width="254" />
-                    <Label FontWeight="Normal" Content="Unspent Tokens: " HorizontalAlignment="Right"
+                            ToolTip="{StaticResource Loc_The_amount_of_tokens_you_have_unspent_on_your_9d8d02}" Width="254" />
+                    <Label FontWeight="Normal" Content="{StaticResource Loc_Unspent_Tokens_12674b}" HorizontalAlignment="Right"
                             Margin="0,153,304,0" VerticalAlignment="Top" Width="105" Height="20" />
-                    <Label FontWeight="Normal" Content="Guardian Rank: " HorizontalAlignment="Right"
+                    <Label FontWeight="Normal" Content="{StaticResource Loc_Guardian_Rank_f60bce}" HorizontalAlignment="Right"
                             Margin="0,178,309,0" VerticalAlignment="Top" Width="100" Height="20" />
 
                     <xctk:IntegerUpDown Value="{Binding Path=profile.Profile.GuardianRank.GuardianRank, Mode=TwoWay}"
                             HorizontalAlignment="Right" Margin="0,178,10,0" VerticalAlignment="Top"
-                            ToolTip="Guardian Rank associated with your profile" Width="254" />
-                    <Label FontWeight="Normal" Content="Guardian XP: " HorizontalAlignment="Right" Margin="0,203,309,0"
+                            ToolTip="{StaticResource Loc_Guardian_Rank_associated_with_your_profile_00eb8f}" Width="254" />
+                    <Label FontWeight="Normal" Content="{StaticResource Loc_Guardian_XP_3e7dd9}" HorizontalAlignment="Right" Margin="0,203,309,0"
                             VerticalAlignment="Top" Width="100" Height="20" />
                     <xctk:LongUpDown Value="{Binding profile.Profile.GuardianRank.NewGuardianExperience, Mode=TwoWay}"
                             HorizontalAlignment="Right" Margin="0,203,10,0" VerticalAlignment="Top"
-                            ToolTip="Amount of XP associated with your guardian rank level" Width="254" />
-                    <Label FontWeight="Normal" Content="Bank SDUs: " HorizontalAlignment="Right" Margin="0,321,309,0"
+                            ToolTip="{StaticResource Loc_Amount_of_XP_associated_with_your_guardian_ra_58c207}" Width="254" />
+                    <Label FontWeight="Normal" Content="{StaticResource Loc_Bank_SDUs_b00b93}" HorizontalAlignment="Right" Margin="0,321,309,0"
                             VerticalAlignment="Top" Width="100" Height="20" />
                     <xctk:IntegerUpDown
                             Value="{Binding profile.Profile, Mode=TwoWay, Converter={StaticResource SDUConverter1}, ConverterParameter=Bank}"
                             Minimum="0" Maximum="{Binding MaximumBankSDUs}" HorizontalAlignment="Right"
-                            Margin="0,321,10,0" VerticalAlignment="Top" ToolTip="Amount of Bank SDUs on your character"
+                            Margin="0,321,10,0" VerticalAlignment="Top" ToolTip="{StaticResource Loc_Amount_of_Bank_SDUs_on_your_character_f25386}"
                             Width="254" />
 
-                    <Label FontWeight="Normal" Content="Lost Loot SDUs: " HorizontalAlignment="Right"
+                    <Label FontWeight="Normal" Content="{StaticResource Loc_Lost_Loot_SDUs_2e6e33}" HorizontalAlignment="Right"
                             Margin="0,346,309,0" VerticalAlignment="Top" Width="100" Height="20" />
                     <xctk:IntegerUpDown
                             Value="{Binding profile.Profile, Mode=TwoWay, Converter={StaticResource SDUConverter1}, ConverterParameter=LostLoot}"
                             Minimum="0" Maximum="{Binding MaximumLostLootSDUs}" HorizontalAlignment="Right"
                             Margin="0,346,10,0" VerticalAlignment="Top"
-                            ToolTip="Amount of Lost Loot SDUs on your profile" Width="254" />
-                    <Label FontWeight="Normal" Content="Citizen Science Bucks: " HorizontalAlignment="Right"
+                            ToolTip="{StaticResource Loc_Amount_of_Lost_Loot_SDUs_on_your_profile_1a7bfd}" Width="254" />
+                    <Label FontWeight="Normal" Content="{StaticResource Loc_Citizen_Science_Bucks_13bae2}" HorizontalAlignment="Right"
                             Margin="0,244,284,0" VerticalAlignment="Top" Width="125" Height="20" />
                     <xctk:IntegerUpDown Value="{Binding profile.Profile.CitizenScienceCSBucksAmount, Mode=TwoWay}"
                             HorizontalAlignment="Right" Margin="0,244,10,0" VerticalAlignment="Top"
-                            ToolTip="Amount of citizen science dollars you've got" Width="254" />
-                    <Label FontWeight="Normal" Content="Golden Keys: " HorizontalAlignment="Right" Margin="0,269,284,0"
+                            ToolTip="{StaticResource Loc_Amount_of_citizen_science_dollars_you_ve_got_050764}" Width="254" />
+                    <Label FontWeight="Normal" Content="{StaticResource Loc_Golden_Keys_7b8f1b}" HorizontalAlignment="Right" Margin="0,269,284,0"
                             VerticalAlignment="Top" Width="125" Height="20" />
                     <xctk:IntegerUpDown
                             Value="{Binding profile.Profile, Mode=TwoWay, Converter={StaticResource KeyToIntegerConverter1}, ConverterParameter=GoldenKeys}"
                             HorizontalAlignment="Right" Margin="0,269,10,0" VerticalAlignment="Top"
-                            ToolTip="Amount of golden keys on your profile" Width="254" />
-                    <Button Content="Clear Lost Loot" HorizontalAlignment="Right" Margin="0,381,304,0" Width="105"
+                            ToolTip="{StaticResource Loc_Amount_of_golden_keys_on_your_profile_cfc905}" Width="254" />
+                    <Button Content="{StaticResource Loc_Clear_Lost_Loot_3cfda7}" HorizontalAlignment="Right" Margin="0,381,304,0" Width="105"
                             Height="24" VerticalAlignment="Top" Name="ClearLLBtn" Click="ClearLLBtn_Click" />
-                    <Button Content="Clear Bank" HorizontalAlignment="Right" Margin="0,381,159,0" Width="105"
+                    <Button Content="{StaticResource Loc_Clear_Bank_15751b}" HorizontalAlignment="Right" Margin="0,381,159,0" Width="105"
                             Height="24" VerticalAlignment="Top" Name="ClearBankBtn" Click="ClearBankBtn_Click" />
-                    <Button Content="Inject Guardian Rank" HorizontalAlignment="Right" Margin="0,381,10,0" Width="125"
+                    <Button Content="{StaticResource Loc_Inject_Guardian_Rank_642c7c}" HorizontalAlignment="Right" Margin="0,381,10,0" Width="125"
                             Height="24" VerticalAlignment="Top" Click="InjectGRBtn_Click" />
-                    <Label FontWeight="Normal" Content="Diamond Keys: " HorizontalAlignment="Right" Margin="0,294,284,0"
+                    <Label FontWeight="Normal" Content="{StaticResource Loc_Diamond_Keys_d7da59}" HorizontalAlignment="Right" Margin="0,294,284,0"
                             VerticalAlignment="Top" Width="125" Height="20" />
                     <xctk:IntegerUpDown
                             Value="{Binding profile.Profile, ConverterParameter=DiamondKeys, Converter={StaticResource KeyToIntegerConverter1}, Mode=TwoWay}"
                             HorizontalAlignment="Right" Margin="0,294,10,0" VerticalAlignment="Top"
-                            ToolTip="Amount of diamond keys for your profile" Width="254" />
-                    <Label FontWeight="Normal" Content="Platform:" HorizontalAlignment="Right" VerticalAlignment="Top"
+                            ToolTip="{StaticResource Loc_Amount_of_diamond_keys_for_your_profile_e0707d}" Width="254" />
+                    <Label FontWeight="Normal" Content="{StaticResource Loc_Platform_098b81}" HorizontalAlignment="Right" VerticalAlignment="Top"
                             Width="61" Height="26" VerticalContentAlignment="Center" Margin="0,5,348,0" />
                     <ComboBox ItemsSource="{Binding Source={StaticResource PlatformDataSource}}"
                             SelectedValue="{Binding Path=profile.Platform}" Margin="0,7,10,0" VerticalAlignment="Top"
@@ -918,64 +918,64 @@
                     <StackPanel Orientation="Horizontal">
                         <Image Width="27" Height="26" Source="Icons\game\MissionIcon_TurnIn.png" Margin="0 0 5 0"
                                 RenderOptions.BitmapScalingMode="Fant" />
-                        <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="About"
+                        <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="{StaticResource Loc_About_6b21fb}"
                                 FontWeight="Medium" />
                     </StackPanel>
                 </TabItem.Header>
                 <Grid Margin="0,0,-6,-5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                     <TextBlock TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
                             Margin="0,0,131,134" FontSize="13">
-                        <Run Text="Developed by" />
+                        <Run Text="{StaticResource Loc_Developed_by_510daf}" />
                         <Hyperlink NavigateUri="http://fdh.one" TextDecorations="Underline"
                                 Foreground="{StaticResource fdh}" RequestNavigate="Hyperlink_RequestNavigate">
                             <Run Text="FromDarkHell" />
                         </Hyperlink>
                         <LineBreak />
                         <LineBreak />
-                        <Run Text="Thanks to: " />
+                        <Run Text="{StaticResource Loc_Thanks_to_478408}" />
                         <LineBreak />
                         <Run
                                 Text="- Gibbed, apocalyptech, raptor/cfi2017, c0dycode, apple1417, LostInCompression, DOMIN8" />
                         <LineBreak />
-                        <Run Text="Extra special thanks to" />
+                        <Run Text="{StaticResource Loc_Extra_special_thanks_to_8b7f78}" />
                         <Hyperlink TextDecorations="Underline"
                                 NavigateUri="https://www.deviantart.com/brokennoah/art/Borderlands-3-icons-797030087">
                             <Run Text="BrokenNoah" />
                         </Hyperlink>
-                        <Run Text="for making the main icon of this program!" />
+                        <Run Text="{StaticResource Loc_for_making_the_main_icon_of_this_program_3b9fa5}" />
                         <LineBreak />
-                        <Run Text="Without their help, this program would not exist." />
+                        <Run Text="{StaticResource Loc_Without_their_help_this_program_would_not_exi_aac9d9}" />
                         <LineBreak />
                         <LineBreak />
-                        <Run Text="Of course, thanks to Gearbox Software for creating this game!" />
+                        <Run Text="{StaticResource Loc_Of_course_thanks_to_Gearbox_Software_for_crea_b6b8fe}" />
                         <LineBreak />
-                        <Run Text="If you wish to support me financially, you can support me via" />
+                        <Run Text="{StaticResource Loc_If_you_wish_to_support_me_financially_you_can_5de536}" />
                         <Hyperlink NavigateUri="https://ko-fi.com/fromdarkhell"
                                 RequestNavigate="Hyperlink_RequestNavigate">
                             <Run Text="ko-fi" TextDecorations="Underline" />
                         </Hyperlink>
-                        <Run Text="or" />
+                        <Run Text="{StaticResource Loc_or_175835}" />
                         <Hyperlink NavigateUri="https://www.patreon.com/fromdarkhell"
                                 RequestNavigate="Hyperlink_RequestNavigate">
                             <Run Text="Patreon" TextDecorations="Underline" />
                         </Hyperlink>
                     </TextBlock>
 
-                    <Expander Header="Batch Processing" HorizontalAlignment="Left" Height="124"
+                    <Expander Header="{StaticResource Loc_Batch_Processing_a8319e}" HorizontalAlignment="Left" Height="124"
                             VerticalAlignment="Bottom" Width="170" IsExpanded="True" Margin="0,0,0,10">
                         <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="99">
                             <TextBlock TextWrapping="WrapWithOverflow" HorizontalAlignment="Center"
                                     TextAlignment="Center" Width="170" Margin="0,0,0,64"><Run
-                                        Text="This edits all saves at once." /><LineBreak /><Run
-                                        Text="Please make backups." /></TextBlock>
-                            <Button Name="AdjustSaveLevelsBtn" Content="Adjust Save Levels" HorizontalAlignment="Left"
+                                        Text="{StaticResource Loc_This_edits_all_saves_at_once_0f55a6}" /><LineBreak /><Run
+                                        Text="{StaticResource Loc_Please_make_backups_58afaa}" /></TextBlock>
+                            <Button Name="AdjustSaveLevelsBtn" Content="{StaticResource Loc_Adjust_Save_Levels_c27c33}" HorizontalAlignment="Left"
                                     Margin="20,69,0,0" VerticalAlignment="Top" Width="130"
-                                    ToolTip="Adjusts the gear and save levels of all of the saves in a folder."
+                                    ToolTip="{StaticResource Loc_Adjusts_the_gear_and_save_levels_of_all_of_th_77d705}"
                                     Click="AdjustSaveLevelsBtn_Click" />
-                            <Button Content="Backup All Saves" Name="BackupAllSavesBtn" HorizontalAlignment="Left"
+                            <Button Content="{StaticResource Loc_Backup_All_Saves_369007}" Name="BackupAllSavesBtn" HorizontalAlignment="Left"
                                     Margin="20,40,0,0" VerticalAlignment="Top" Width="130"
                                     RenderTransformOrigin="0.5,0.083"
-                                    ToolTip="Backs up all of your saves into a zip file for easier backing up"
+                                    ToolTip="{StaticResource Loc_Backs_up_all_of_your_saves_into_a_zip_file_fo_7a358e}"
                                     Click="BackupAllSavesBtn_Click" />
                         </Grid>
                     </Expander>
@@ -983,15 +983,15 @@
 
                     <TextBlock HorizontalAlignment="Right" TextWrapping="Wrap" VerticalAlignment="Bottom"
                             Margin="0,0,6,5">
-                        <Run Foreground="MediumPurple" Text="In memory of Baysix. Fly high." />
+                        <Run Foreground="MediumPurple" Text="{StaticResource Loc_In_memory_of_Baysix_Fly_high_1a6040}" />
                     </TextBlock>
-                    <Button Content="Check For Updates" VerticalAlignment="Top" HorizontalAlignment="Right"
+                    <Button Content="{StaticResource Loc_Check_For_Updates_534209}" VerticalAlignment="Top" HorizontalAlignment="Right"
                             Margin="0,22,6,0" Width="120" Click="UpdateButton_Click" />
-                    <CheckBox Name="DarkModeBox" Content="Enable Dark Mode" HorizontalAlignment="Right"
+                    <CheckBox Name="DarkModeBox" Content="{StaticResource Loc_Enable_Dark_Mode_0baea2}" HorizontalAlignment="Right"
                             Margin="0,51,6,0" VerticalAlignment="Top" IsChecked="True" Height="20"
                             Checked="DarkModeBox_Checked" Unchecked="DarkModeBox_Checked" Width="120" />
                     <Label VerticalAlignment="Top" HorizontalAlignment="Right" FontWeight="Normal"
-                            Content="{Binding Path=Version, Mode=OneTime}" ContentStringFormat="Version: {0}"
+                            Content="{Binding Path=Version, Mode=OneTime}" ContentStringFormat="{StaticResource Loc_Version_0_32b5f7}"
                             Width="120" Margin="0,0,6,0" Height="16" />
                 </Grid>
             </TabItem>

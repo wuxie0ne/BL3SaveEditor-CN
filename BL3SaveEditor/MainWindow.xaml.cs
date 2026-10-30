@@ -1,4 +1,4 @@
-﻿using Microsoft.Win32;
+using Microsoft.Win32;
 using System;
 using System.Linq;
 using System.Windows;
@@ -115,7 +115,7 @@ namespace BL3SaveEditor {
                     foreach (var item in equippedItems) {
                         if (!item.Enabled || item.InventoryListIndex < 0 || item.InventoryListIndex > saveGame.InventoryItems.Count - 1) continue;
                         usedIndexes.Add(item.InventoryListIndex);
-                        px.Add(new StringSerialPair("Equipped", saveGame.InventoryItems[item.InventoryListIndex]));
+                        px.Add(new StringSerialPair(App.Text("GroupEquipped"), saveGame.InventoryItems[item.InventoryListIndex]));
                     }
                     itemsToSearch = saveGame.InventoryItems;
                 }
@@ -129,14 +129,14 @@ namespace BL3SaveEditor {
                     var serial = itemsToSearch[i];
 
                     // Split the items out into groups, assume weapons because they're the most numerous and different
-                    string itemType = "Weapon";
+                    string itemType = App.Text("GroupWeapon");
 
-                    if (serial.InventoryKey == null) itemType = "Other";
-                    else if (serial.InventoryKey.Contains("_ClassMod")) itemType = "Class Mods";
-                    else if (serial.InventoryKey.Contains("_Artifact")) itemType = "Artifacts";
-                    else if (serial.InventoryKey.Contains("_Shield")) itemType = "Shields";
-                    else if (serial.InventoryKey.Contains("_Customization")) itemType = "Customizations";
-                    else if (serial.InventoryKey.Contains("_GrenadeMod_")) itemType = "Grenades";
+                    if (serial.InventoryKey == null) itemType = App.Text("GroupOther");
+                    else if (serial.InventoryKey.Contains("_ClassMod")) itemType = App.Text("GroupClassMods");
+                    else if (serial.InventoryKey.Contains("_Artifact")) itemType = App.Text("GroupArtifacts");
+                    else if (serial.InventoryKey.Contains("_Shield")) itemType = App.Text("GroupShields");
+                    else if (serial.InventoryKey.Contains("_Customization")) itemType = App.Text("GroupCustomizations");
+                    else if (serial.InventoryKey.Contains("_GrenadeMod_")) itemType = App.Text("GroupGrenades");
                     
                     px.Add(new StringSerialPair(itemType, serial));
                 }
@@ -315,12 +315,12 @@ namespace BL3SaveEditor {
         private void OpenSaveBtn_Click(object sender, RoutedEventArgs e) {
 
             Dictionary<Platform, string> PlatformFilters = new Dictionary<Platform, string>() {
-                { Platform.PC, "PC BL3 Save/Profile (*.sav)|*.sav" },
-                { Platform.PS4, "PS4 BL3 Save/Profile (*.sav)|*.sav" }
+                { Platform.PC, App.Text("FilterPC") },
+                { Platform.PS4, App.Text("FilterPS4") }
             };
 
             OpenFileDialog fileDialog = new OpenFileDialog {
-                Title = "Select BL3 Save/Profile",
+                Title = App.Text("SelectSave"),
                 Filter = string.Join("|", PlatformFilters.Values),
                 InitialDirectory = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "My Games", "Borderlands 3", "Saved", "SaveGames"),
             };
@@ -371,7 +371,7 @@ namespace BL3SaveEditor {
                 Console.WriteLine("Failed to load save ({0}) :: {1}", filePath, ex.Message);
                 Console.WriteLine(ex.StackTrace);
 
-                MessageBox.Show($"Error parsing save: {ex.Message}", "Save Parse Exception", AdonisUI.Controls.MessageBoxButton.OK, AdonisUI.Controls.MessageBoxImage.Error);
+                MessageBox.Show(string.Format(App.Text("SaveParseError"), ex.Message), App.Text("SaveParseTitle"), AdonisUI.Controls.MessageBoxButton.OK, AdonisUI.Controls.MessageBoxImage.Error);
             }
         }
 
@@ -396,8 +396,8 @@ namespace BL3SaveEditor {
         private void SaveAsSaveBtn_Click(object sender, RoutedEventArgs e) {
             Console.WriteLine("Saving save as...");
             SaveFileDialog saveFileDialog = new SaveFileDialog() {
-                Title = "Save BL3 Save/Profile",
-                Filter = "BL3 Save/Profile (*.sav)|*.sav",
+                Title = App.Text("SaveFile"),
+                Filter = App.Text("FilterSaveProfile"),
                 InitialDirectory = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "My Games", "Borderlands 3", "Saved", "SaveGames")
             };
 
@@ -451,8 +451,8 @@ namespace BL3SaveEditor {
 
         private void AdjustSaveLevelsBtn_Click(object sender, RoutedEventArgs e) {
             OpenFileDialog fileDialog = new OpenFileDialog {
-                Title = "Select BL3 Saves",
-                Filter = "BL3 Save (*.sav)|*.sav",
+                Title = App.Text("SelectSaves"),
+                Filter = App.Text("FilterSave"),
                 InitialDirectory = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "My Games", "Borderlands 3", "Saved", "SaveGames"),
                 Multiselect = true
             };
@@ -460,7 +460,7 @@ namespace BL3SaveEditor {
             if (fileDialog.ShowDialog() != true) return;
 
             int level = 0;
-            var msgBox = new Controls.IntegerMessageBox("Enter a level to sync saves to: ", "Level: ", minimumXP, maximumXP, maximumXP);
+            var msgBox = new Controls.IntegerMessageBox(App.Text("SyncSavePrompt"), App.Text("LevelLabel"), minimumXP, maximumXP, maximumXP);
             msgBox.Owner = this;
             msgBox.ShowDialog();
             if (!msgBox.Succeeded) return;
@@ -486,8 +486,8 @@ namespace BL3SaveEditor {
         private void BackupAllSavesBtn_Click(object sender, RoutedEventArgs e) {
             // Ask the user for all the saves to backup
             OpenFileDialog fileDialog = new OpenFileDialog {
-                Title = "Backup BL3 Saves/Profiles",
-                Filter = "BL3 Save/Profile (*.sav)|*.sav",
+                Title = App.Text("BackupSaves"),
+                Filter = App.Text("FilterSaveProfile"),
                 InitialDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "My Games", "Borderlands 3", "Saved", "SaveGames"),
                 Multiselect = true
             };
@@ -495,8 +495,8 @@ namespace BL3SaveEditor {
 
             // Ask the user for a zip output
             SaveFileDialog outDialog = new SaveFileDialog {
-                Title = "Backup Outputs",
-                Filter = "ZIP file|*.zip",
+                Title = App.Text("BackupOutput"),
+                Filter = App.Text("FilterZip"),
                 InitialDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "My Games", "Borderlands 3", "Saved", "SaveGames"),
                 RestoreDirectory = true,
             };
@@ -684,12 +684,12 @@ namespace BL3SaveEditor {
                 string message = ex.Message;
                 Console.WriteLine($"Exception ({message}) parsing serial: {ex.ToString()}");
                 if (ex.knowCause)
-                    MessageBox.Show($"Error parsing serial: {ex.Message}", "Serial Parse Exception", AdonisUI.Controls.MessageBoxButton.OK, AdonisUI.Controls.MessageBoxImage.Error);
+                    MessageBox.Show(string.Format(App.Text("SerialParseError"), ex.Message), App.Text("SerialParseTitle"), AdonisUI.Controls.MessageBoxButton.OK, AdonisUI.Controls.MessageBoxImage.Error);
             }
             catch(Exception ex) {
                 string message = ex.Message;
                 Console.WriteLine($"Exception ({message}) parsing serial: {ex.ToString()}");
-                MessageBox.Show($"Error parsing serial: {ex.Message}", "Serial Parse Exception", AdonisUI.Controls.MessageBoxButton.OK, AdonisUI.Controls.MessageBoxImage.Error);
+                MessageBox.Show(string.Format(App.Text("SerialParseError"), ex.Message), App.Text("SerialParseTitle"), AdonisUI.Controls.MessageBoxButton.OK, AdonisUI.Controls.MessageBoxImage.Error);
             }
         }
         private void SyncEquippedBtn_Click(object sender, RoutedEventArgs e) {
@@ -706,7 +706,7 @@ namespace BL3SaveEditor {
         private void SyncAllBtn_Click(object sender, RoutedEventArgs e) {
             int levelToSync = -1;
             if (profile != null) {
-                var msgBox = new Controls.IntegerMessageBox("Please enter a level to sync your items for syncing", "Level: ", 0, maximumXP, maximumXP);
+                var msgBox = new Controls.IntegerMessageBox(App.Text("SyncItemPrompt"), App.Text("LevelLabel"), 0, maximumXP, maximumXP);
                 msgBox.Owner = this;
                 msgBox.ShowDialog();
                 if (!msgBox.Succeeded) return;
@@ -831,7 +831,7 @@ namespace BL3SaveEditor {
                     foreach (string part in parts) {
                         List<string> dependencies = InventorySerialDatabase.GetDependenciesForPart(part);
                         if (part != longName && dependencies.Contains(longName)) {
-                            var result = MessageBox.Show("Are you sure you want to delete this part? If you do that, you'll make the item illegitimate.", "Are you sure?", MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No);
+                            var result = MessageBox.Show(App.Text("DeletePartWarning"), App.Text("ConfirmTitle"), MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No);
 
                             if(result == MessageBoxResult.No) return;
                             else {
@@ -961,8 +961,8 @@ namespace BL3SaveEditor {
         private void InjectGRBtn_Click(object sender, RoutedEventArgs e) {
             // Ask the user for all the saves to inject into
             OpenFileDialog fileDialog = new OpenFileDialog {
-                Title = "Select saves to inject into",
-                Filter = "BL3 Save/Profile (*.sav)|*.sav",
+                Title = App.Text("SelectInjectSaves"),
+                Filter = App.Text("FilterSaveProfile"),
                 InitialDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "My Games", "Borderlands 3", "Saved", "SaveGames"),
                 Multiselect = true
             };
@@ -1054,10 +1054,10 @@ namespace BL3SaveEditor {
                 if(args.IsUpdateAvailable) {
                     MessageBoxResult result;
                     if(args.Mandatory.Value) {
-                        result = MessageBox.Show($@"There is a new version {args.CurrentVersion} available. This update is required. Press OK to begin updating.", "Update Available", MessageBoxButton.OK, MessageBoxImage.Information);
+                        result = MessageBox.Show(string.Format(App.Text("UpdateMandatory"), args.CurrentVersion), App.Text("UpdateTitle"), MessageBoxButton.OK, MessageBoxImage.Information);
                     }
                     else {
-                        result = MessageBox.Show($@"There is a new version {args.CurrentVersion} available. You're using version {args.InstalledVersion}. Do you want to update now?", "Update Available", MessageBoxButton.YesNo, MessageBoxImage.Information);
+                        result = MessageBox.Show(string.Format(App.Text("UpdateOptional"), args.CurrentVersion, args.InstalledVersion), App.Text("UpdateTitle"), MessageBoxButton.YesNo, MessageBoxImage.Information);
                     }
 
                     if (result.Equals(MessageBoxResult.Yes) || result.Equals(MessageBoxResult.OK)) {
@@ -1078,7 +1078,7 @@ namespace BL3SaveEditor {
             }
             else {
                 if (args.Error is System.Net.WebException) {
-                    MessageBox.Show("There is a problem reaching update server. Please check your internet connection and try again later.", "Update Check Failed", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show(App.Text("UpdateFailed"), App.Text("UpdateFailedTitle"), MessageBoxButton.OK, MessageBoxImage.Error);
                 }
                 else {
                     MessageBox.Show(args.Error.Message, args.Error.GetType().ToString(), MessageBoxButton.OK, MessageBoxImage.Error);
