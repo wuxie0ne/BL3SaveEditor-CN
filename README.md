@@ -2,6 +2,8 @@
 
 [简体中文](#简体中文) | [English](#english)
 
+![BL3SaveEditor-CN 界面截图 / Screenshot](docs/images/screenshot.png)
+
 ## 简体中文
 
 BL3SaveEditor-CN 是 [FromDarkHell/BL3SaveEditor](https://github.com/FromDarkHell/BL3SaveEditor) 的简体中文版本，用于编辑《无主之地 3》的角色存档和个人档案。本项目在原版基础上提供中文界面、部分游戏名称和部件说明，以及 Windows 便携版构建。
