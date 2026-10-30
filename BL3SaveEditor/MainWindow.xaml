@@ -220,6 +220,7 @@
                                     VerticalContentAlignment="Center" HorizontalContentAlignment="Left"
                                     Margin="10,38,330,0" Height="24" />
                             <ComboBox Name="PlayerHeadBox" VerticalContentAlignment="Top"
+                                    ItemTemplate="{StaticResource GameNameTemplate}"
                                     IsEnabled="{Binding bSaveLoaded}" ItemsSource="{Binding Path=ValidPlayerHeads}"
                                     SelectedValue="{Binding saveGame.Character, Converter={StaticResource HeadCustomizationToStringConverter}, ConverterParameter=heads}"
                                     HorizontalAlignment="Left" Margin="155,38,0,0" VerticalAlignment="Top" Width="271" />
@@ -228,6 +229,7 @@
                                     VerticalContentAlignment="Center" HorizontalContentAlignment="Left"
                                     Margin="10,68,330,0" Height="22" />
                             <ComboBox Name="PlayerSkinBox" VerticalContentAlignment="Top"
+                                    ItemTemplate="{StaticResource GameNameTemplate}"
                                     IsEnabled="{Binding bSaveLoaded}" ItemsSource="{Binding Path=ValidPlayerSkins}"
                                     SelectedValue="{Binding saveGame.Character, Converter={StaticResource SkinCustomizationToStringConverter}, ConverterParameter=skins}"
                                     HorizontalAlignment="Left" Margin="155,66,0,0" VerticalAlignment="Top" Width="271" />
@@ -567,6 +569,7 @@
                                     </xctk:IntegerUpDown.IsEnabled>
                                 </xctk:IntegerUpDown>
                                 <ComboBox ItemsSource="{Binding ValidBalances}"
+                                        ItemTemplate="{StaticResource GameAssetTemplate}"
                                         SelectedValue="{Binding SelectedBalance, Mode=TwoWay}" Margin="115,60,104,0"
                                         VerticalAlignment="Top"
                                         IsEnabled="{Binding Path=SelectedSerial.InventoryKey, TargetNullValue=False}" />
@@ -673,6 +676,7 @@
                                                                 HorizontalAlignment="Stretch"
                                                                 HorizontalContentAlignment="Left"
                                                                 SelectedValue="{Binding Path=., Mode=TwoWay}"
+                                                                ItemTemplate="{StaticResource GameAssetTemplate}"
                                                                 ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor,  AncestorType={x:Type local:MainWindow}}, Path=ValidParts}"
                                                                 DropDownOpened="ComboBox_DropDownChanged"
                                                                 DropDownClosed="ComboBox_DropDownChanged">
@@ -729,6 +733,7 @@
                                                                 HorizontalAlignment="Stretch"
                                                                 HorizontalContentAlignment="Left"
                                                                 SelectedValue="{Binding Path=.}"
+                                                                ItemTemplate="{StaticResource GameAssetTemplate}"
                                                                 ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor,  AncestorType={x:Type local:MainWindow}}, Path=ValidGenerics}"
                                                                 DropDownOpened="ComboBox_DropDownChanged"
                                                                 DropDownClosed="ComboBox_DropDownChanged">
@@ -827,7 +832,7 @@
                             AutoGenerateColumns="False" Margin="10,10,424,10" VerticalAlignment="Stretch"
                             HorizontalAlignment="Stretch">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="{StaticResource Loc_Name_709a23}" IsReadOnly="True" Binding="{Binding Path=str}" Width="*" />
+                            <DataGridTextColumn Header="{StaticResource Loc_Name_709a23}" IsReadOnly="True" Binding="{Binding Path=str, Converter={StaticResource GameNameConverter}, ConverterParameter=guardian}" Width="*" />
                             <DataGridTemplateColumn Header="{StaticResource Loc_Spent_Tokens_5cf325}" Width="*">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>

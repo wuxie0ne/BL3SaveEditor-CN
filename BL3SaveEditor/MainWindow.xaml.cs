@@ -544,11 +544,12 @@ namespace BL3SaveEditor {
         private void FastTravelChkBx_StateChanged(object sender, RoutedEventArgs e) {
             if (sender == null || saveGame == null) return;
             CheckBox senderBx = (CheckBox)sender;
-            if (senderBx.Content.GetType() != typeof(TextBlock)) return;
+            var station = senderBx.DataContext as BoolStringPair;
+            if (station == null || SelectedPlaythroughBox.SelectedIndex < 0) return;
 
             bool bFastTravelEnabled = senderBx.IsChecked == true;
-            string fastTravelToChange = ((senderBx.Content as TextBlock).Text);
-            string assetPath = DataPathTranslations.FastTravelTranslations.FirstOrDefault(x => x.Value == fastTravelToChange).Key;
+            string fastTravelToChange = station.Value;
+            string assetPath = station.AssetPath;
             
             Console.WriteLine("Changed state of {0} ({2}) to {1}", fastTravelToChange, bFastTravelEnabled, assetPath);
             int amtOfPlaythroughs = saveGame.Character.ActiveTravelStationsForPlaythroughs.Count - 1;
@@ -559,13 +560,13 @@ namespace BL3SaveEditor {
             }
 
             var travelStations = saveGame.Character.ActiveTravelStationsForPlaythroughs[playthroughIndex].ActiveTravelStations;
-            if(bFastTravelEnabled) {
+            if(bFastTravelEnabled && !travelStations.Any(x => x.ActiveTravelStationName == assetPath)) {
                 travelStations.Add(new OakSave.ActiveFastTravelSaveData() {
                     ActiveTravelStationName = assetPath,
                     Blacklisted = false
                 });
             }
-            else {
+            else if (!bFastTravelEnabled) {
                 travelStations.RemoveAll(x => x.ActiveTravelStationName == assetPath);
             }
 

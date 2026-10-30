@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Windows.Data;
 using System.Linq;
+using BL3SaveEditor.Localization;
 using BL3Tools;
 using BL3Tools.GameData;
 using OakSave;
@@ -342,7 +343,7 @@ namespace BL3SaveEditor.Helpers {
             Dictionary<string, string> mapsToShow = bShowDbgMaps ? dbgMapsToShow : MapsToShow;
             List<BoolStringPair> result = new List<BoolStringPair>();
             foreach (KeyValuePair<string, string> kvp in mapsToShow) {
-                result.Add(new BoolStringPair(playthroughData.Contains(kvp.Key), kvp.Value));
+                result.Add(new BoolStringPair(playthroughData.Contains(kvp.Key), kvp.Key, GameNames.Translate("travel", kvp.Value)));
             }
 
             result = result.OrderBy(x => x.Value).ToList();
@@ -727,9 +728,11 @@ namespace BL3SaveEditor.Helpers {
     }
     public class BoolStringPair {
         public bool booleanVar { get; set; } = false;
+        public string AssetPath { get; private set; }
         public string Value { get; set; } = "";
-        public BoolStringPair(bool var, string val) {
+        public BoolStringPair(bool var, string assetPath, string val) {
             booleanVar = var;
+            AssetPath = assetPath;
             Value = val;
         }
     }
@@ -743,7 +746,7 @@ namespace BL3SaveEditor.Helpers {
         }
 
         public override string ToString() {
-            return Val2.UserFriendlyName;
+            return GameNames.ItemName(Val2);
         }
 
         public static implicit operator Borderlands3Serial(StringSerialPair x) {

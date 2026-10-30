@@ -21,8 +21,10 @@
         <Label Content="{StaticResource Loc_Balance_c0edd5}" FontWeight="Normal" VerticalContentAlignment="Center" HorizontalAlignment="Left"
                 Margin="10,60,0,0" VerticalAlignment="Top" Width="60" Height="24" />
         <ComboBox ItemsSource="{Binding Path=ItemTypes}" SelectedValue="{Binding Path=SelectedItemType}"
+                ItemTemplate="{StaticResource GameTypeTemplate}"
                 HorizontalAlignment="Stretch" Margin="75,10,10,0" VerticalAlignment="Top" />
         <ComboBox SelectionChanged="BalanceBox_Selected"  ItemsSource="{Binding Path=Balances}" SelectedValue="{Binding Path=SelectedBalance}"
+                ItemTemplate="{StaticResource GameAssetTemplate}"
                 HorizontalAlignment="Stretch" Margin="75,60,10,0" VerticalAlignment="Top" />
         <Button Content="{StaticResource Loc_Save_efc007}" Name="SaveBtn" Click="SaveBtn_Click" HorizontalAlignment="Right" Margin="0,0,102,13"
                 VerticalAlignment="Bottom" Width="89" />

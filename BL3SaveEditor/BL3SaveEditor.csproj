@@ -112,6 +112,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Helpers\Helpers.cs" />
+    <Compile Include="Localization\GameNames.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -251,6 +252,9 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Localization\zh-CN\GameNames.json">
+      <LogicalName>BL3SaveEditor.Localization.GameNames.json</LogicalName>
+    </EmbeddedResource>
     <Resource Include="Borderlands 3 002 512 x 512 ICO.ico" />
   </ItemGroup>
   <ItemGroup>

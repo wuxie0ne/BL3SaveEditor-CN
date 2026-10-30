@@ -4,7 +4,7 @@ A desktop based save _and_ profile editor for [Borderlands 3](borderlands.com/).
 
 ### 简体中文版本
 
-本仓库默认显示简体中文，界面文本集中在 `BL3SaveEditor/Localization/zh-CN/Strings.xaml`。物品和部件名称、原始存档字段、调试日志以及部分第三方控件文本仍可能显示英文；存档中的原始数据不会因界面翻译而改变。
+本仓库默认显示简体中文，界面文本集中在 `BL3SaveEditor/Localization/zh-CN/Strings.xaml`，游戏名称和部件显示文本集中在 `BL3SaveEditor/Localization/zh-CN/GameNames.json`。游戏名称的来源、未翻译项和维护方式见 [游戏名称汉化说明](docs/game-names-zh-CN.md)。原始存档字段、调试日志以及部分第三方控件文本仍可能显示英文；存档中的原始标识不会因界面翻译而改变。
 
 可在 GitHub Actions 中手动运行 `Build portable executable`，从运行结果的 Artifacts 下载便携版。程序仍需要 Windows 上的 .NET Framework 4.7.2 或兼容版本。当前自动更新功能仍指向上游英文版，请勿通过它更新中文版。
 
