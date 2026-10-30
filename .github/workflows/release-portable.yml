@@ -1,0 +1,78 @@
+name: Release portable executable
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Existing Git tag to build and release (for example, v1.0.0-cn)
+        required: true
+        type: string
+      prerelease:
+        description: Mark this release as a pre-release
+        required: true
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: windows-2022
+    steps:
+      - name: Validate tag name
+        shell: pwsh
+        env:
+          RELEASE_TAG: ${{ inputs.tag }}
+        run: |
+          if ([string]::IsNullOrWhiteSpace($env:RELEASE_TAG) -or $env:RELEASE_TAG.StartsWith('-')) {
+            throw 'Enter a valid existing tag name.'
+          }
+          git check-ref-format "refs/tags/$env:RELEASE_TAG"
+          if ($LASTEXITCODE -ne 0) { throw 'Invalid Git tag name.' }
+
+      - name: Check out tagged source and submodules
+        uses: actions/checkout@v4
+        with:
+          ref: refs/tags/${{ inputs.tag }}
+          submodules: recursive
+          persist-credentials: false
+
+      - name: Add MSBuild to PATH
+        uses: microsoft/setup-msbuild@v2
+
+      - name: Restore dependencies
+        run: msbuild BL3SaveEditor.sln -t:Restore -p:RestorePackagesConfig=true '-p:Configuration=Single File' '-p:Platform=Any CPU'
+
+      - name: Build single-file configuration
+        run: msbuild BL3SaveEditor.sln -m -t:Build '-p:Configuration=Single File' '-p:Platform=Any CPU'
+
+      - name: Prepare release files
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Path release -Force | Out-Null
+          Copy-Item -LiteralPath 'BL3SaveEditor/bin/Single File/BL3SaveEditor.exe' -Destination 'release/BL3SaveEditor-Portable.exe' -ErrorAction Stop
+          Compress-Archive -LiteralPath 'release/BL3SaveEditor-Portable.exe' -DestinationPath 'release/BL3SaveEditor-Portable.zip'
+
+      - name: Create and publish release
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RELEASE_TAG: ${{ inputs.tag }}
+          IS_PRERELEASE: ${{ inputs.prerelease }}
+        run: |
+          @'
+          简体中文便携版。需要 Windows 和 .NET Framework 4.7.2 或兼容版本。
+          部分游戏名称和部件仍显示英文，编辑存档前请先备份。
+          程序内自动更新指向上游英文版，请勿使用该功能更新中文版。
+          '@ | Set-Content -LiteralPath release/notes.md -Encoding utf8
+
+          $releaseArgs = @('release', 'create', $env:RELEASE_TAG,
+            'release/BL3SaveEditor-Portable.exe', 'release/BL3SaveEditor-Portable.zip',
+            '--verify-tag', '--draft', '--title', $env:RELEASE_TAG,
+            '--notes-file', 'release/notes.md', '--generate-notes')
+          if ($env:IS_PRERELEASE -eq 'true') { $releaseArgs += '--prerelease' }
+          gh @releaseArgs
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          gh release edit $env:RELEASE_TAG --draft=false
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }

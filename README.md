@@ -8,6 +8,8 @@ A desktop based save _and_ profile editor for [Borderlands 3](borderlands.com/).
 
 可在 GitHub Actions 中手动运行 `Build portable executable`，从运行结果的 Artifacts 下载便携版。程序仍需要 Windows 上的 .NET Framework 4.7.2 或兼容版本。当前自动更新功能仍指向上游英文版，请勿通过它更新中文版。
 
+发布时，先将指向目标提交的 Git tag 推送到 GitHub，再在 Actions 中手动运行 `Release portable executable`，填写该 tag 并按需选择预发布。工作流会构建 tag 对应的源码，创建 Release 并附上 EXE 和 ZIP；相同 tag 已有 Release 时不会覆盖。如果上传或发布失败，请检查是否留下 Release 草稿。
+
 ![](https://img.shields.io/tokei/lines/github/FromDarkHell/BL3SaveEditor?style=for-the-badge) ![](https://img.shields.io/github/downloads/FromDarkHell/BL3SaveEditor/total?style=for-the-badge)
 
 ### Installation / Usage
