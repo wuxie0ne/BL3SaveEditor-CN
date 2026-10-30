@@ -1,0 +1,38 @@
+name: Build portable executable
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: windows-2022
+    steps:
+      - name: Check out source and submodules
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Add MSBuild to PATH
+        uses: microsoft/setup-msbuild@v2
+
+      - name: Restore dependencies
+        run: msbuild BL3SaveEditor.sln -t:Restore -p:RestorePackagesConfig=true '-p:Configuration=Single File' '-p:Platform=Any CPU'
+
+      - name: Build single-file configuration
+        run: msbuild BL3SaveEditor.sln -m -t:Build '-p:Configuration=Single File' '-p:Platform=Any CPU'
+
+      - name: Prepare executable
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Path artifact -Force | Out-Null
+          Copy-Item -LiteralPath 'BL3SaveEditor/bin/Single File/BL3SaveEditor.exe' -Destination 'artifact/BL3SaveEditor-Portable.exe' -ErrorAction Stop
+
+      - name: Upload executable
+        uses: actions/upload-artifact@v4
+        with:
+          name: BL3SaveEditor-Portable
+          path: artifact/BL3SaveEditor-Portable.exe
+          if-no-files-found: error
